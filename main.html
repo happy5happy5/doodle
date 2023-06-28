@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #canvas-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    #canvas {
+      border: 1px solid black;
+      background-color: white;
+      padding-top: 10px;
+    }
+
+    body{
+      background-image: url('images/doodle-4181783.png');
+      background-size: 80%;
+    }
+
+    #image-container {
+      border: 1px solid black;
+      width: 300px;
+      height: 300px;
+      margin-left: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #image-container img {
+      max-width: 100%;
+      /*max-height: c;*/
+    }
+
+    header {
+      background-color: #CCCCCC;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      height: 150px;
+      width: 100%;
+      background-color: #FFD700;
+      color: white;
+    }
+
+    h1{
+      padding-top: 10px;
+      font-size: 3em;
+    }
+
+    #action-buttons {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    #action-buttons button {
+      margin: 0 5px;
+    }
+
+    @font-face {
+      font-family: 'MaplestoryOTFBold';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    body {
+      font-family: 'MaplestoryOTFBold', sans-serif;
+    }
+
+    button{
+      float : left;
+      width: 150px;
+      height: 40px;
+      background-color: #ccc;
+      border-radius : 20px;
+      box-shadow : 3px 3px 3px rgb(87, 87, 87); /*오른쪽 3픽셀, 아래쪽 3픽셀 번짐효과. 3픽셀 그림자.*/
+      transition-duration: 0.3s;
+      color: white;
+      border: 0px;
+    }
+
+    button:active{
+      margin-left: 5px;
+      margin-top : 5px;
+      box-shadow : none;/*클릭했을 때 그림자효과가 사라짐*/
+    }
+
+    #image-upload{
+      background-color: #dbdb34;
+      border-radius : 20px;
+      box-shadow : 3px 3px 3px rgb(87, 87, 87);
+      width: 200px;
+      color: white;
+    }
+
+  </style>
+  <meta charset="utf-8">
+</head>
+<body>
+<header>
+  <h1>FTF조</h1>
+</header>
+<div id="canvas-container">
+  <canvas id="canvas" width="300" height="300"></canvas>
+  <div id="image-container" style="background-color: white">
+    <img id="image">
+  </div>
+</div>
+<div id="action-buttons">
+  <button onclick="clearCanvas('real-clear')" style="background-color: #89e73c;">그림 전체 지우기</button>
+  <button onclick="undo()" style="background-color: #d33eed;">이전으로 돌아가기</button>
+</div>
+<div>
+  <span>분류 결과: </span>
+  <div id="result"></div>
+<!--  줄바꿈-->
+  <br>
+  <div id="prediction"></div>
+  <div id="input_image"></div>
+
+</div>
+<!--<script type="text/javascript" src="tensorflow.js"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.9.0/dist/tf.min.js"></script>
+<script src="testing.js"></script>
+</body>
+</html>
