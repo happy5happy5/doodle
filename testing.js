@@ -114,6 +114,9 @@ function translate(text) {
     let translatedText = "";
     switch (text) {
         // 한글로 번역
+        case "guitar":
+            translatedText = "기타";
+            break;
         case "bee":
             translatedText = "벌";
             break;
