@@ -11,21 +11,61 @@ ctx.lineWidth = 6;
 let isDrawing = false;
 let lastX, lastY;
 let strokes = [[]]; // 각 그림의 좌표를 하위 리스트로 저장
+let showPreparedImage = false;
 
 canvas.addEventListener('mousedown', startPainting);
 canvas.addEventListener('mouseup', stopPainting);
 canvas.addEventListener('mousemove', draw);
 canvas.addEventListener('contextmenu', toggleEraser); // 마우스 오른쪽 버튼 클릭 이벤트
 
+// 캔버스의 클릭이벤트에 터치이벤트 추가
+// event.preventDefault() 추가해서 그림 그려지도록 변경
+canvas.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    startPaintingM(e);
+}, { passive: false });
+canvas.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    stopPainting();
+}, { passive: false });
+canvas.addEventListener('touchmove', (e) => {
+    e.preventDefault();
+    drawM(e);
+}, { passive: false });
+
+
+// 모바일 터치로 그림을 그릴 수 있도록 하는 함수 startPaintingM 추가
+function startPaintingM(e) {
+    console.log("startPaintingM");
+    isDrawing = true;
+    // e.touches[0].clientX, e.touches[0].clientY 를 캔버스위의 좌표로 변환
+    [lastX, lastY] = [e.touches[0].clientX - canvas.offsetLeft, e.touches[0].clientY - canvas.offsetTop];
+    strokes[strokes.length - 1].push([lastX, lastY]);
+}
+// 모바일 터치로 그림을 그릴 수 있도록 하는 함수 drawM 추가
+function drawM(e) {
+    if (!isDrawing) return;
+    console.log("drawM");
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+    // e.touches[0].clientX, e.touches[0].clientY 를 캔버스위의 좌표로 변환
+    ctx.lineTo(e.touches[0].clientX - canvas.offsetLeft, e.touches[0].clientY - canvas.offsetTop);
+    console.log(e.touches[0].clientX - canvas.offsetLeft, e.touches[0].clientY - canvas.offsetTop)
+    ctx.stroke();
+    [lastX, lastY] = [e.touches[0].clientX - canvas.offsetLeft, e.touches[0].clientY - canvas.offsetTop];
+    strokes[strokes.length - 1].push([lastX, lastY]);
+}
+
+
 function startPainting(e) {
-    // console.log("startPainting");
+    console.log("startPainting");
     isDrawing=true
-    [lastX, lastY] = [e.offsetX, e.offsetY];
+        [lastX, lastY] = [e.offsetX, e.offsetY];
     strokes[strokes.length - 1].push([lastX, lastY]);
 }
 
 function stopPainting() {
-    // console.log("stopPainting");
+    console.log("stopPainting");
     isDrawing = false;
     [lastX, lastY]=[]
     strokes.push([]); // 새로운 그림의 좌표를 저장할 하위 리스트 추가
@@ -36,10 +76,11 @@ function stopPainting() {
 
 function draw(e) {
     if (!isDrawing) return;
-    // console.log("drawString")
+    console.log("drawString")
     ctx.beginPath();
     ctx.moveTo(lastX, lastY);
     ctx.lineTo(e.offsetX,e.offsetY);
+    console.log(e.offsetX,e.offsetY)
     ctx.stroke();
     [lastX, lastY] = [e.offsetX, e.offsetY];
     strokes[strokes.length - 1].push([lastX, lastY]);
@@ -71,6 +112,33 @@ function translate(text) {
     let translatedText = "";
     switch (text) {
         // 한글로 번역
+        case "bee":
+            translatedText = "벌";
+            break;
+        case "candle":
+            translatedText = "양초";
+            break;
+        case "car":
+            translatedText = "자동차";
+            break;
+        case "clock":
+            translatedText = "시계";
+            break;
+        case "fish":
+            translatedText = "물고기";
+            break;
+        case "octopus":
+            translatedText = "문어";
+            break;
+        case "snowman":
+            translatedText = "눈사람";
+            break;
+        case "tree":
+            translatedText = "나무";
+            break;
+        case "umbrella":
+            translatedText = "우산";
+            break;
         case "bear":
             translatedText = "곰";
             break;
@@ -189,9 +257,7 @@ function translate(text) {
 function speak(text) {
     // 영어를 한글로 번역
     let translatedText = translate(text);
-
     // 한글의 소리를 재생
-    // 한글 목소리 설정
     const utterThis = new SpeechSynthesisUtterance(translatedText);
     utterThis.lang = "ko-KR";
     utterThis.pitch = 1;
@@ -207,6 +273,10 @@ function  speak2(text) {
     utterThis.pitch = 1;
     utterThis.rate = 1;
     synth.speak(utterThis);
+    const result = document.getElementById('result');
+    while (result.hasChildNodes()) {
+        result.removeChild(result.firstChild);
+    }
 }
 
 
@@ -255,8 +325,6 @@ async function scalingImage(event) {
     const scaledImage = document.getElementById("image");
     // new 폴더에서 my-model.json 모델을 불러온다
     const model = await tf.loadLayersModel('/new/my-model.json');
-
-
 
     // let model =await tf.loadLayersModel();
     // // <img id="image">
@@ -357,3 +425,4 @@ function inputImageChecker(input){
     ctx.putImageData(imgData, 0, 0);
     //test end
 }
+
