@@ -119,6 +119,40 @@
         color: white;
         border: 0px;
     }
+  /*  classes */
+  /*  캔버스 옆에 나란히 있도록 css 수정 */
+  /*  세로 1줄로 정렬*/
+    .classes{
+        float : left;
+        width: 150px;
+        height: 40px;
+        background-color: #ccc;
+        border-radius : 20px;
+        box-shadow : 3px 3px 3px rgb(87, 87, 87); /*오른쪽 3픽셀, 아래쪽 3픽셀 번짐효과. 3픽셀 그림자.*/
+        transition-duration: 0.3s;
+        color: white;
+        border: 0px;
+        margin-left: 10px;
+        margin-top: 10px;
+        text-align: center;
+        font-size: 1.5em;
+        font-weight: bold;
+
+    }
+
+    .classes:active{
+      margin-left: 5px;
+      margin-top : 5px;
+      box-shadow : none;/*클릭했을 때 그림자효과가 사라짐*/
+    }
+
+    .classes:hover{
+      background-color: #FFD700;
+      color: white;
+    }
+
+
+
   </style>
   <meta charset="utf-8">
 </head>
@@ -126,6 +160,26 @@
 <header>
   <h1>FTF조</h1>
 </header>
+<!--테스트가 가능한 낙서의 종류를 텍스트로 표시한다-->
+<div>
+  <span>낙서 종류: </span>
+<!--  'bee', 'candle', 'car', 'clock', 'fish', 'guitar', 'octopus', 'snowman', 'tree', 'umbrella'-->
+  <div>
+<!--  가능한 종류를 한글로 나열한다-->
+<!--    버튼이 아니라 그냥 텍스트만 나열-->
+    <div class="classes">벌</div>
+    <div class="classes">양초</div>
+    <div class="classes">자동차</div>
+    <div class="classes">시계</div>
+    <div class="classes">물고기</div>
+    <div class="classes">기타</div>
+    <div class="classes">문어</div>
+    <div class="classes">눈사람</div>
+    <div class="classes">나무</div>
+    <div class="classes">우산</div>
+  </div>
+
+</div>
 <div id="canvas-container">
   <canvas id="canvas" width="300" height="300"></canvas>
   <div id="image-container" style="background-color: white">
