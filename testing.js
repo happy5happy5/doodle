@@ -37,7 +37,7 @@ canvas.addEventListener('touchmove', (e) => {
 // 모바일 터치로 그림을 그릴 수 있도록 하는 함수 startPaintingM 추가
 function startPaintingM(e) {
     e.preventDefault()
-    console.log("startPaintingM");
+    // console.log("startPaintingM");
     isDrawing = true;
     // e.touches[0].clientX, e.touches[0].clientY 를 캔버스위의 좌표로 변환
     [lastX, lastY] = [e.touches[0].clientX - canvas.offsetLeft, e.touches[0].clientY - canvas.offsetTop];
@@ -47,7 +47,7 @@ function startPaintingM(e) {
 function drawM(e) {
     e.preventDefault()
     if (!isDrawing) return;
-    console.log("drawM");
+    // console.log("drawM");
     ctx.beginPath();
     ctx.moveTo(lastX, lastY);
     // e.touches[0].clientX, e.touches[0].clientY 를 캔버스위의 좌표로 변환
@@ -60,14 +60,14 @@ function drawM(e) {
 
 
 function startPainting(e) {
-    console.log("startPainting");
+    // console.log("startPainting");
     isDrawing=true
         [lastX, lastY] = [e.offsetX, e.offsetY];
     strokes[strokes.length - 1].push([lastX, lastY]);
 }
 
 function stopPainting() {
-    console.log("stopPainting");
+    // console.log("stopPainting");
     isDrawing = false;
     [lastX, lastY]=[]
     strokes.push([]); // 새로운 그림의 좌표를 저장할 하위 리스트 추가
@@ -78,7 +78,7 @@ function stopPainting() {
 
 function draw(e) {
     if (!isDrawing) return;
-    console.log("drawString")
+    // console.log("drawString")
     ctx.beginPath();
     ctx.moveTo(lastX, lastY);
     ctx.lineTo(e.offsetX,e.offsetY);

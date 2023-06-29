@@ -2,10 +2,50 @@
 <html>
 <head>
   <style>
+    body{
+      /*  배경 그림이 화면에 맞게 펼쳐지도록 변경*/
+      margin: 0;
+      padding: 0;
+      background-image: url('images/doodle-4181783.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-attachment: fixed;
+      font-family: 'MaplestoryOTFBold', sans-serif;
+      overflow-x: hidden;
+    }
+
+    header {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+      height: 5em;
+      background-color: #FFD700;
+      color: white;
+      padding: 0.1em;
+    }
+
+    h1{
+      font-size: 2em;
+      font-weight: bold;
+    }
+
+
+    @font-face {
+      font-family: 'MaplestoryOTFBold';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
     #canvas-container {
       display: flex;
       justify-content: center;
       align-items: center;
+      margin: 0 auto;
+      width: 100%;
+      max-width: 800px;
       padding: 20px;
     }
 
@@ -15,10 +55,9 @@
       padding-top: 10px;
     }
 
-    body{
-      background-image: url('images/doodle-4181783.png');
-      background-size: 80%;
-    }
+
+
+
 
     #image-container {
       border: 1px solid black;
@@ -32,25 +71,8 @@
 
     #image-container img {
       max-width: 100%;
-      /*max-height: c;*/
     }
 
-    header {
-      background-color: #CCCCCC;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
-      height: 150px;
-      width: 100%;
-      background-color: #FFD700;
-      color: white;
-    }
-
-    h1{
-      padding-top: 10px;
-      font-size: 3em;
-    }
 
     #action-buttons {
       display: flex;
@@ -62,20 +84,11 @@
       margin: 0 5px;
     }
 
-    @font-face {
-      font-family: 'MaplestoryOTFBold';
-      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff') format('woff');
-      font-weight: normal;
-      font-style: normal;
-    }
 
-    body {
-      font-family: 'MaplestoryOTFBold', sans-serif;
-    }
 
     button{
       float : left;
-      width: 150px;
+      width: 8rem;
       height: 40px;
       background-color: #ccc;
       border-radius : 20px;
@@ -108,20 +121,19 @@
       color: #FFD700;
     }
 
-    .resultButton{
-        float : left;
-        width: 150px;
-        height: 40px;
-        background-color: #ccc;
-        border-radius : 20px;
-        box-shadow : 3px 3px 3px rgb(87, 87, 87); /*오른쪽 3픽셀, 아래쪽 3픽셀 번짐효과. 3픽셀 그림자.*/
-        transition-duration: 0.3s;
-        color: white;
-        border: 0px;
+    .result-container{
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      border: 1px solid #FFD700;
     }
-  /*  classes */
-  /*  캔버스 옆에 나란히 있도록 css 수정 */
-  /*  세로 1줄로 정렬*/
     .classes{
         width: 150px;
         height: 40px;
@@ -154,8 +166,10 @@
 
 
 
+
   </style>
-  <meta charset="utf-8">
+
+  <meta charset="utf-8" name="viewport" content="width=device-width">
 </head>
 <body>
 <header>
@@ -172,7 +186,7 @@
   <button onclick="clearCanvas('real-clear')" style="background-color: #89e73c;">그림 전체 지우기</button>
   <button onclick="undo()" style="background-color: #d33eed;">이전으로 돌아가기</button>
 </div>
-<div>
+<div class="result-container">
   <div>
     <!--  가능한 종류를 한글로 나열한다-->
     <!--    버튼이 아니라 그냥 텍스트만 나열-->
