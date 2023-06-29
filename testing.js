@@ -55,42 +55,15 @@ function showImage(text) {
     // text 에 해당하는 이미지를 #image 에 보여준다
     // text 에 빈칸이 있으면 빈칸을 제거 해준다
     text = text.replace(/\s/gi, "");
-    let img = document.getElementById("image");
-    // text 에 해당하는 이미지를 https://kor.pngtree.com/so/text 로 검색한다
-    // xpath를 이용해서 검색의 첫번째 이미지를 가져온다
-    let xpath = '//*[@id="v2-content"]/div[2]/div/div[1]/div/ul/li[1]/div[2]/a';
-    let url = "https://kor.pngtree.com/so/" + text;
-    // 검색한 내용에서 xpath를 이용해서 첫번째 이미지를 찾는다
-    let result = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-    // 검색한 내용에서 첫번째 이미지의 src를 가져온다
-    let src = result.getElementsByTagName("img")[0].src;
-    // 가져온 src를 img에 보여준다
-    img.src = src;
+    // images 폳더에서 불러온 이미지 파일의 크기를 300x300 으로 맞춰준다
+    // images 폴더에 text.png 파일이 있다면 보여주고 없다면 text.jpg 를 보여준다
+    // fs말고 다른 방법으로 이미지를 불러오는 방법이 있을까?
+    img.src=`./images/tiger.png`;
+    // img.src = fs.existsSync(`./images/${text}.png`) ? `./images/${text}.png` : `./images/bear.jpg`;
+    // img.src = fs.existsSync(`./images/${text}.png`) ? `./images/${text}.png` : `./images/${text}.jpg`;
+
 }
 
-function showResult(text) {
-    // text 에 해당하는 한글을 #result 에 보여준다
-    // text 에 빈칸이 있으면 빈칸을 제거 해준다
-    text = text.replace(/\s/gi, "");
-    // text 에 해당하는 한글을 #result 에 보여준다
-    document.getElementById("result").innerText = text;
-}
-
-// id result 의 결과를 클릭하면 실행되는 함수
-// function resultClick() {
-//     // 분류 결과를 클릭하면 해당 하는 글자의 한글과 영어의 소리를 재생
-//     // 분류 결과 텍스트에서 괄호를 삭제하고 앞부분의 글자만 읽게 한다
-//     let text = document.getElementById("result").innerText;
-//     let text2 = text.split("(")[0];
-//     console.log(text2);
-//     // 한글과 영어의 소리를 재생
-//     speak(text2);
-//     speak2(text2);
-//     // 해당 동물의 이미지를 #image에 보여준다
-//     showImage(text2);
-//     // 해당 동물의 한글을 #result 에 보여준다
-//     showResult(text2);
-// }
 function translate(text) {
     // text 를 한글로 번역 해서 리턴 해준다
     // text 에 빈칸이 있으면 빈칸을 제거 해준다
@@ -100,54 +73,117 @@ function translate(text) {
         // 한글로 번역
         case "bear":
             translatedText = "곰";
-            return translatedText;
+            break;
         case "cat":
             translatedText = "고양이";
-            return translatedText;
+            break;
         case "cow":
             translatedText = "소";
-            return translatedText;
+            break;
         case "dog":
             translatedText = "개";
-            return translatedText;
+            break;
         case "fish":
             translatedText = "물고기";
-            return translatedText;
+            break;
         case "snake":
             translatedText = "뱀";
-            return translatedText;
+            break;
         case "duck":
             translatedText = "오리";
-            return translatedText;
+            break;
         case "lion":
             translatedText = "사자";
-            return translatedText;
+            break;
         case "tiger":
             translatedText = "호랑이";
-            return translatedText;
+            break;
         case "crocodile":
             translatedText = "악어";
-            return translatedText;
+            break;
         case "bird":
             translatedText = "새";
-            return translatedText;
+            break;
         case "butterfly":
             translatedText = "나비";
-            return translatedText;
+            break;
         case "monkey":
             translatedText = "원숭이";
-            return translatedText;
+            break;
         case "pig":
             translatedText = "돼지";
-            return translatedText;
+            break;
         case "elephant":
             translatedText = "코끼리";
-            return translatedText;
+            break;
+        case "horse":
+            translatedText = "말";
+            break;
+        case "sheep":
+            translatedText = "양";
+            break;
+        case "rabbit":
+            translatedText = "토끼";
+            break;
+        case "fox":
+            translatedText = "여우";
+            break;
+        case "giraffe":
+            translatedText = "기린";
+            break;
+        case "penguin":
+            translatedText = "펭귄";
+            break;
+        case "zebra":
+            translatedText = "얼룩말";
+            break;
+        case "mouse":
+            translatedText = "쥐";
+            break;
+        case "deer":
+            translatedText = "사슴";
+            break;
+        case "wolf":
+            translatedText = "늑대";
+            break;
+        case "squirrel":
+            translatedText = "다람쥐";
+            break;
+        case "hedgehog":
+            translatedText = "고슴도치";
+            break;
+        case "hamster":
+            translatedText = "햄스터";
+            break;
+        case "turtle":
+            translatedText = "거북이";
+            break;
+        case "chicken":
+            translatedText = "닭";
+            break;
+        case "frog":
+            translatedText = "개구리";
+            break;
+        case "dolphin":
+            translatedText = "돌고래";
+            break;
+        case "whale":
+            translatedText = "고래";
+            break;
+        case "shark":
+            translatedText = "상어";
+            break;
+        case "octopus":
+            translatedText = "문어";
+            break;
+        case "jellyfish":
+            translatedText = "해파리";
+            break;
         default:
             translatedText = "번역 실패";
-            return translatedText;
-
+            break;
     }
+    return translatedText;
 
 }
 function speak(text) {
@@ -203,6 +239,11 @@ function clearCanvas(flag) {
         //document.body.querySelector('#image') 의 src를 삭제
         const image = document.getElementById('image');
         image.src = "";
+        //document.body.querySelector('#result') 자식 요소를 모두 삭제
+        const result = document.getElementById('result');
+        while (result.hasChildNodes()) {
+            result.removeChild(result.firstChild);
+        }
     }
     console.log("clearCanvas");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -212,7 +253,12 @@ function clearCanvas(flag) {
 async function scalingImage(event) {
     // 이미지를 캔버스 크기에 맞게 그리고,
     const scaledImage = document.getElementById("image");
-    let model =await tf.loadLayersModel("new/model.json")
+    // new 폴더에서 my-model.json 모델을 불러온다
+    const model = await tf.loadLayersModel('/new/my-model.json');
+
+
+
+    // let model =await tf.loadLayersModel();
     // // <img id="image">
     scaledImage.src = canvas.toDataURL(); // 캔버스에 그려진 이미지를 28 by 28 크기로 다운스케일링하고,
     scaledImage.onload = async function () {
@@ -236,25 +282,54 @@ async function scalingImage(event) {
 
 
         input=input.div(255.0).asType('float32');
+
+
+
         const predictions = await model.predict(input).data();
-        const classNames = ['ant', 'bat', 'bear', 'bee', 'bird', 'butterfly', 'camel', 'cat', 'cow', 'crab', 'crocodile', 'dog', 'dolphin', 'duck', 'elephant', 'fish', 'frog', 'giraffe', 'horse', 'kangaroo', 'lion', 'monkey', 'mouse', 'octopus', 'panda', 'penguin', 'pig', 'shark', 'sheep', 'snail', 'snake', 'spider', 'squirrel', 'swan', 'tiger', 'whale', 'zebra'];
-        // console.log(predictions)
+        // class_names.txt 파일을 불러옵니다.
+        // classNames 라는 리스트에 클래스 이름을 저장합니다.
+        // const classNames = await fetch("new/class_names.txt")
+        //     .then((response) => response.text())
+        //     .then((text) => text.split("\n"));
+        //
+        // console.log(classNames);
+        let classNames = ['bee', 'candle', 'car', 'clock', 'fish', 'guitar', 'octopus', 'snowman', 'tree', 'umbrella'];
+
+        // const classNames = [
+        //     "bear",
+        //     "cat",
+        //     "cow",
+        //     "dog",
+        //     "fish",
+        //     "snake",
+        //     "duck",
+        //     "lion",
+        //     "tiger",
+        //     "crocodile",
+        //     "bird",
+        //     "butterfly",
+        //     "monkey",
+        //     "pig",
+        //     "elephant"
+        // ];
+        //
         const sortedPredictions = Array.from(predictions)
             .map((prediction, i) => ({ className: classNames[i], probability: prediction }))
             .sort((a, b) => b.probability - a.probability)
             .slice(0, 5);
         const resultElement = document.getElementById("result");
         // 해당 결과를 클릭하면 해당 결과의 한글과 영어 소리가 재생됩니다.
+        // resultElement에 sortedPredictions를 map을 이용하여 button을 생성합니다.
+        // button을 클릭하면 speak와 speak2를 실행합니다.
+        // speak는 한글의 소리를 재생하고, speak2는 영어의 소리를 재생합니다.
+        // speak와 speak2는 각각의 text를 매개변수로 받습니다.
+        // button을 클릭하면 showImage 함수가 실행됩니다.
+        // resultClick 함수는 해당 버튼의 text를 매개변수로 받습니다.
+        resultElement.innerHTML = sortedPredictions.map(p => `<button class="resultButton" onclick="speak('${p.className}'); speak2('${p.className}'); showImage('${p.className}')">${p.className} (${p.probability.toFixed(4)})</button>`).join(", ");
 
-        resultElement.innerHTML = sortedPredictions.map(p => `<button onclick="speak('${p.className}'); speak2('${p.className}')">${p.className} (${p.probability.toFixed(4)})</button>`).join(", ");
 
 
-        // id image에 해당 결과의 이미지가 출력됩니다.
 
-        // const imageElement = document.getElementById("image");
-        // // imageElement.src = `images/${sortedPredictions[0].className}.jpg`;
-        // // 지금은 테스트 코드이기때문에 doodle-4181783.png를 출력하도록 했습니다.
-        // imageElement.src = `images/doodle-4181783.png`;
     }
 }
 

@@ -91,14 +91,34 @@
       box-shadow : none;/*클릭했을 때 그림자효과가 사라짐*/
     }
 
-    #image-upload{
-      background-color: #dbdb34;
-      border-radius : 20px;
-      box-shadow : 3px 3px 3px rgb(87, 87, 87);
-      width: 200px;
+    button:hover{
+      background-color: #FFD700;
       color: white;
     }
 
+    #result{
+      font-size: 2em;
+      font-weight: bold;
+      color: #FFD700;
+    }
+
+    #prediction{
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #FFD700;
+    }
+
+    .resultButton{
+        float : left;
+        width: 150px;
+        height: 40px;
+        background-color: #ccc;
+        border-radius : 20px;
+        box-shadow : 3px 3px 3px rgb(87, 87, 87); /*오른쪽 3픽셀, 아래쪽 3픽셀 번짐효과. 3픽셀 그림자.*/
+        transition-duration: 0.3s;
+        color: white;
+        border: 0px;
+    }
   </style>
   <meta charset="utf-8">
 </head>
