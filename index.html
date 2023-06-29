@@ -123,7 +123,6 @@
   /*  캔버스 옆에 나란히 있도록 css 수정 */
   /*  세로 1줄로 정렬*/
     .classes{
-        float : left;
         width: 150px;
         height: 40px;
         background-color: #ccc;
@@ -137,6 +136,8 @@
         text-align: center;
         font-size: 1.5em;
         font-weight: bold;
+    /*  가로로 정렬한다*/
+        float : left;
 
     }
 
@@ -160,26 +161,7 @@
 <header>
   <h1>FTF조</h1>
 </header>
-<!--테스트가 가능한 낙서의 종류를 텍스트로 표시한다-->
-<div>
-  <span>낙서 종류: </span>
-<!--  'bee', 'candle', 'car', 'clock', 'fish', 'guitar', 'octopus', 'snowman', 'tree', 'umbrella'-->
-  <div>
-<!--  가능한 종류를 한글로 나열한다-->
-<!--    버튼이 아니라 그냥 텍스트만 나열-->
-    <div class="classes">벌</div>
-    <div class="classes">양초</div>
-    <div class="classes">자동차</div>
-    <div class="classes">시계</div>
-    <div class="classes">물고기</div>
-    <div class="classes">기타</div>
-    <div class="classes">문어</div>
-    <div class="classes">눈사람</div>
-    <div class="classes">나무</div>
-    <div class="classes">우산</div>
-  </div>
 
-</div>
 <div id="canvas-container">
   <canvas id="canvas" width="300" height="300"></canvas>
   <div id="image-container" style="background-color: white">
@@ -191,6 +173,21 @@
   <button onclick="undo()" style="background-color: #d33eed;">이전으로 돌아가기</button>
 </div>
 <div>
+  <div>
+    <!--  가능한 종류를 한글로 나열한다-->
+    <!--    버튼이 아니라 그냥 텍스트만 나열-->
+    <span >분류 가능: </span>
+    <span >벌 ,</span>
+    <span >양초 ,</span>
+    <span >자동차 ,</span>
+    <span >시계 ,</span>
+    <span >물고기 ,</span>
+    <span >기타 ,</span>
+    <span >문어 ,</span>
+    <span >눈사람 ,</span>
+    <span >나무 ,</span>
+    <span >우산 ,</span>
+  </div>
   <span>분류 결과: </span>
   <div id="result"></div>
 <!--  줄바꿈-->
