@@ -99,12 +99,10 @@ function showImage(text) {
     // text 에 빈칸이 있으면 빈칸을 제거 해준다
     text = text.replace(/\s/gi, "");
     // images 폳더에서 불러온 이미지 파일의 크기를 300x300 으로 맞춰준다
-    // images 폴더에 text.png 파일이 있다면 보여주고 없다면 text.jpg 를 보여준다
-    // fs말고 다른 방법으로 이미지를 불러오는 방법이 있을까?
-    img.src=`./images/tiger.png`;
-    // img.src = fs.existsSync(`./images/${text}.png`) ? `./images/${text}.png` : `./images/bear.jpg`;
-    // img.src = fs.existsSync(`./images/${text}.png`) ? `./images/${text}.png` : `./images/${text}.jpg`;
-
+    img.width = 300;
+    img.height = 300;
+    // images 폴더에 text.png 파일이 있다면 보여준다
+    img.src = `images/${text}.png`;
 }
 
 function translate(text) {
