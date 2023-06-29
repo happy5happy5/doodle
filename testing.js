@@ -52,7 +52,7 @@ function drawM(e) {
     ctx.moveTo(lastX, lastY);
     // e.touches[0].clientX, e.touches[0].clientY 를 캔버스위의 좌표로 변환
     ctx.lineTo(e.touches[0].clientX - canvas.offsetLeft, e.touches[0].clientY - canvas.offsetTop);
-    console.log(e.touches[0].clientX - canvas.offsetLeft, e.touches[0].clientY - canvas.offsetTop)
+    // console.log(e.touches[0].clientX - canvas.offsetLeft, e.touches[0].clientY - canvas.offsetTop)
     ctx.stroke();
     [lastX, lastY] = [e.touches[0].clientX - canvas.offsetLeft, e.touches[0].clientY - canvas.offsetTop];
     strokes[strokes.length - 1].push([lastX, lastY]);
@@ -82,7 +82,7 @@ function draw(e) {
     ctx.beginPath();
     ctx.moveTo(lastX, lastY);
     ctx.lineTo(e.offsetX,e.offsetY);
-    console.log(e.offsetX,e.offsetY)
+    // console.log(e.offsetX,e.offsetY)
     ctx.stroke();
     [lastX, lastY] = [e.offsetX, e.offsetY];
     strokes[strokes.length - 1].push([lastX, lastY]);

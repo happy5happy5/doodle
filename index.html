@@ -13,6 +13,7 @@
       background-attachment: fixed;
       font-family: 'MaplestoryOTFBold', sans-serif;
       overflow-x: hidden;
+      /*overflow-y: hidden;*/
     }
 
     header {
@@ -42,10 +43,11 @@
     }
 
     #canvas-container {
+      /*화면 크기가 바뀜에 따라 위치가 화면 크기에 따라 약간씩 움직이도록*/
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 0 ;
+      margin: 0 auto ;
       width: 100%;
       max-width: 800px;
       padding: 20px;
@@ -56,7 +58,8 @@
       background-color: white;
       padding-top: 10px;
     /*  canvas와 image-container 의 크기가 똑같도록 상대적인 크기로 설정*/
-      margin-left: 4rem;
+      margin-left: 2rem;
+      margin-right: 2rem;
     }
 
 
@@ -82,14 +85,21 @@
         min-height: 100%;
         min-width: 100%;
         width: auto;
-        height: auto;
+        height: 100%;
         margin: 0 auto;
         display: block;
         z-index: -1;
     }
-
+    /*image-container 의 외곽선이 항상 보이도록 설정*/
     #image-container {
-      max-width: 100%;
+        box-sizing: border-box;
+        border: 1px solid black;
+        background-color: white;
+        padding-top: 10px;
+          /*  canvas와 image-container 의 크기가 똑같도록 상대적인 크기로 설정*/
+        width: 50%;
+        height: 20rem;
+        max-width: 100%;
     }
 
 
@@ -184,6 +194,71 @@
     }
 
 
+  /*  모바일 환경에서 image-container cavas cavas-container css 설정*/
+    @media screen and (max-width: 800px) {
+      body {
+        overflow: auto;
+      }
+        #canvas-container {
+            flex-direction: column;
+        }
+        #canvas {
+            margin: 0;
+            height: 80%;
+            width: 100%;
+            padding-bottom: 0;
+        }
+        #image-container {
+            margin-top: 20px;
+        }
+    /*    image 가 image container안에만 있도록 설정*/
+        #image-container {
+            width: 100%;
+            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
+            margin: 0 auto;
+            display: block;
+            z-index: -1;
+        }
+        #image{
+            /*이미지가 없더라도 모양 유지*/
+            min-height: 100%;
+            min-width: 100%;
+            width: 100%;
+            height: 16rem;
+            margin: 0 auto;
+            display: block;
+            z-index: -1;
+        }
+        #action-buttons {
+            flex-direction: row;
+        }
+        #action-buttons button {
+            margin: 5px 0;
+        }
+    /*    header 크기 작게 조정*/
+        header {
+          font-size: 0.5em;
+          height: 0px;
+          margin: 0;
+          padding: 0;
+          background-color: transparent;
+          color: black;
+        }
+        button{
+          float : left;
+          width: 3rem;
+          height: 15px;
+          background-color: #ccc;
+          border-radius : 20px;
+          box-shadow : 3px 3px 3px rgb(87, 87, 87); /*오른쪽 3픽셀, 아래쪽 3픽셀 번짐효과. 3픽셀 그림자.*/
+          transition-duration: 0.3s;
+          color: white;
+          border: 0;
+        }
+
+    }
 
 
   </style>
@@ -196,9 +271,11 @@
 </header>
 
 <div id="canvas-container">
-  <canvas id="canvas" width="300" height="300"></canvas>
+  <canvas id="canvas" width="400" height="310"></canvas>
+  <!--    image-container 에 이미지가 없더라도 외곽선이 보이도록 설정-->
   <div id="image-container" style="background-color: white">
-    <img id="image">
+<!--    이미지가 없다면 xbox.jpg를 띄우도록 설정-->
+    <img id="image" src="" alt="" >
   </div>
 </div>
 <div id="action-buttons">
