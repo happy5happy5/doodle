@@ -36,6 +36,7 @@ canvas.addEventListener('touchmove', (e) => {
 
 // 모바일 터치로 그림을 그릴 수 있도록 하는 함수 startPaintingM 추가
 function startPaintingM(e) {
+    e.preventDefault()
     console.log("startPaintingM");
     isDrawing = true;
     // e.touches[0].clientX, e.touches[0].clientY 를 캔버스위의 좌표로 변환
@@ -44,6 +45,7 @@ function startPaintingM(e) {
 }
 // 모바일 터치로 그림을 그릴 수 있도록 하는 함수 drawM 추가
 function drawM(e) {
+    e.preventDefault()
     if (!isDrawing) return;
     console.log("drawM");
     ctx.beginPath();
